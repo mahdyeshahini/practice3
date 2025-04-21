@@ -1,0 +1,29 @@
+
+const int buttonPin = 2;    // پایه‌ای که دکمه به اون متصل میشه
+const int ledPin = 13;      // پایه‌ای که LED به اون متصل میشه
+
+// متغیر برای ذخیره وضعیت دکمه
+int buttonState = 0;       
+
+void setup() {
+  // تنظیم پایه‌ها
+  pinMode(ledPin, OUTPUT);    
+  pinMode(buttonPin, INPUT_PULLUP);  
+  
+ 
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  buttonState = digitalRead(buttonPin);
+
+  // بررسی وضعیت دکمه
+  if (buttonState == LOW) { 
+    digitalWrite(ledPin, HIGH);  // روشن کردن LED
+    Serial.println("LED ON");
+  } else {  
+    digitalWrite(ledPin, LOW);   // خاموش کردن LED
+    Serial.println("LED OFF");
+  }
+}
